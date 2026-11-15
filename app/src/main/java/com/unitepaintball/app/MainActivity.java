@@ -1961,6 +1961,7 @@ public class MainActivity extends Activity {
         LinearLayout composerTop=row();
         TextView av=tv(initials(first),13,true,BG);av.setGravity(Gravity.CENTER);av.setBackground(makeBg(NeonPalette.GREEN,999,NeonPalette.GREEN));composerTop.addView(av,new LinearLayout.LayoutParams(dp(42),dp(42)));
         TextView prompt=tv("Publier dans le fil de l’Unité…",13,false,MUTED);prompt.setGravity(Gravity.CENTER_VERTICAL);prompt.setPadding(dp(13),0,dp(8),0);prompt.setBackground(makeBg(BG,999,STROKE));LinearLayout.LayoutParams plp=new LinearLayout.LayoutParams(0,dp(42),1);plp.setMargins(dp(8),0,0,0);composerTop.addView(prompt,plp);composer.addView(composerTop);
+        prompt.setOnClickListener(v->openGalleryPicker(false));
         // Actions du composeur : disposition mobile 2 + 1 pour éviter que « ÉVÉNEMENT »
         // soit tronqué sur les écrans étroits. Les deux premières actions partagent la
         // première ligne ; ÉVÉNEMENT occupe toute la largeur sur la seconde ligne.
@@ -2299,6 +2300,7 @@ public class MainActivity extends Activity {
         TextView avatar=tv("UP",11,true,LIME);avatar.setGravity(Gravity.CENTER);avatar.setBackground(makeBg(CARD_2,999,LIME));line.addView(avatar,new LinearLayout.LayoutParams(dp(38),dp(38)));
         EditText input=editField("Écrire un commentaire…","");input.setSingleLine(false);input.setMaxLines(3);input.setTextSize(13);input.setTag("home_comment_input");LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(0,dp(46),1);ip.setMargins(dp(8),0,dp(8),0);line.addView(input,ip);
         Button send=iconButton("➤");send.setTextColor(BG);send.setBackground(makeBg(LIME,999,LIME));send.setOnClickListener(v->{String text=input.getText().toString().trim();if(text.isEmpty())return;sendGallerySocial("comment",id,text);input.setText("");});line.addView(send,new LinearLayout.LayoutParams(dp(46),dp(46)));post.addView(line);
+        send.setContentDescription("Envoyer le commentaire");
     }
 
     private void focusHomeComment(LinearLayout post){
@@ -2792,6 +2794,7 @@ public class MainActivity extends Activity {
         content.removeAllViews();
         LinearLayout head=row();
         Button back=iconButton("‹");back.setTextSize(32);back.setTextColor(TEXT);back.setOnClickListener(v->{activeChatChannel="";handler.removeCallbacks(chatSync);title.setText("Messages");renderMessages();});head.addView(back,new LinearLayout.LayoutParams(dp(44),dp(44)));
+        back.setContentDescription("Retour aux conversations");
         TextView avatar=tv(initials(label),13,true,BG);avatar.setGravity(Gravity.CENTER);avatar.setBackground(makeBg(LIME,999,LIME));head.addView(avatar,new LinearLayout.LayoutParams(dp(44),dp(44)));
         LinearLayout who=new LinearLayout(this);who.setOrientation(LinearLayout.VERTICAL);who.setPadding(dp(10),0,0,0);who.addView(tv(label,18,true,TEXT));who.addView(tv("En ligne · synchronisation automatique",11,false,NeonPalette.GREEN));head.addView(who,new LinearLayout.LayoutParams(0,-2,1));
         TextView more=tv("•••",20,true,MUTED);more.setGravity(Gravity.CENTER);head.addView(more,new LinearLayout.LayoutParams(dp(50),dp(44)));content.addView(head);
@@ -2813,8 +2816,10 @@ public class MainActivity extends Activity {
 
         LinearLayout composer=row();composer.setGravity(Gravity.BOTTOM);
         Button photo=iconButton("＋");photo.setTextColor(BG);photo.setTextSize(24);photo.setBackground(makeBg(LIME,999,LIME));photo.setOnClickListener(v->{Intent pick=new Intent(Intent.ACTION_OPEN_DOCUMENT);pick.addCategory(Intent.CATEGORY_OPENABLE);pick.setType("image/*");startActivityForResult(pick,REQ_CHAT_IMAGE);});composer.addView(photo,new LinearLayout.LayoutParams(dp(46),dp(46)));
+        photo.setContentDescription("Joindre une photo");
         EditText input=editField("Envoyer un message…",activeChatDraft);input.setMinLines(1);input.setMaxLines(4);activeChatInput=input;LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(0,-2,1);ip.setMargins(dp(8),0,dp(8),0);composer.addView(input,ip);
         Button send=iconButton("➤");send.setTextColor(BG);send.setBackground(makeBg(LIME,999,LIME));send.setOnClickListener(v->sendActiveChat());composer.addView(send,new LinearLayout.LayoutParams(dp(48),dp(48)));content.addView(composer);
+        send.setContentDescription("Envoyer le message");
         TextView mediaHint=tv("＋ Photo · conversation synchronisée avec le site",10,false,MUTED);mediaHint.setPadding(dp(54),dp(5),0,dp(6));content.addView(mediaHint);
         io.execute(()->{try{SyncApi.post(this,"/api/communication",store.token(),new JSONObject().put("action","read_channel").put("channel",channel));}catch(Exception ignored){}});
     }
