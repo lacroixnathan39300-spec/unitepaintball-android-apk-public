@@ -795,7 +795,10 @@ public class MainActivity extends Activity {
         LinearLayout panel=new LinearLayout(this);panel.setOrientation(LinearLayout.VERTICAL);panel.setPadding(dp(10),dp(8),0,0);panel.setVisibility(View.GONE);
         for(String[] item:items) panel.addView(mainMenuLeaf(item[0],item[1],item[2],item[3],dialog));
         wrap.addView(panel);list.addView(wrap);panels.add(panel);arrows.add(arrow);
-        header.setOnClickListener(v->{boolean opening=panel.getVisibility()!=View.VISIBLE;for(int i=0;i<panels.size();i++){panels.get(i).setVisibility(View.GONE);arrows.get(i).setText("▼");}if(opening){panel.setVisibility(View.VISIBLE);arrow.setText("▲");}});
+        // Accessibilité : l'en-tête annonce son nom et son état (ouvert / replié) et se comporte comme un bouton.
+        header.setContentDescription(title+", "+subtitle+", replié");
+        header.setFocusable(true);
+        header.setOnClickListener(v->{boolean opening=panel.getVisibility()!=View.VISIBLE;for(int i=0;i<panels.size();i++){panels.get(i).setVisibility(View.GONE);arrows.get(i).setText("▼");}if(opening){panel.setVisibility(View.VISIBLE);arrow.setText("▲");}header.setContentDescription(title+", "+subtitle+(opening?", ouvert":", replié"));});
     }
 
     private LinearLayout mainMenuLeaf(String label,String detail,String target,String icon,android.app.Dialog dialog){
