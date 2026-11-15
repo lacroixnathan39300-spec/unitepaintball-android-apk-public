@@ -1,0 +1,44 @@
+plugins { id 'com.android.application' }
+
+def releasePropertiesFile = rootProject.file('SIGNATURE-PRIVEE/signing.properties')
+def releaseProperties = new Properties()
+if (releasePropertiesFile.exists()) {
+    releasePropertiesFile.withInputStream { releaseProperties.load(it) }
+}
+
+android {
+    namespace 'com.unitepaintball.app'
+    compileSdk 36
+
+    signingConfigs {
+        production {
+            if (releasePropertiesFile.exists()) {
+                storeFile new File(releasePropertiesFile.parentFile, releaseProperties.getProperty('storeFile'))
+                storePassword releaseProperties.getProperty('storePassword')
+                keyAlias releaseProperties.getProperty('keyAlias')
+                keyPassword releaseProperties.getProperty('keyPassword')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            if (releasePropertiesFile.exists()) signingConfig signingConfigs.production
+        }
+    }
+
+    defaultConfig {
+        applicationId 'com.unitepaintball.app'
+        minSdk 26
+        targetSdk 36
+        versionCode 122
+        versionName '2.2.72-work-site-app-parity'
+    }
+
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:34.19.0')
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.zxing:core:3.5.3'
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+}

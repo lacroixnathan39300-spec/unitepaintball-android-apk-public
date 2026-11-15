@@ -1,0 +1,5 @@
+const test=require('node:test'),assert=require('node:assert/strict');
+const esbuild=require('../tools/node_modules/esbuild');
+const vm=require('node:vm');const out=esbuild.buildSync({entryPoints:['tools/ownership-policy.ts'],bundle:true,write:false,format:'cjs'}).outputFiles[0].text;const ctx={module:{exports:{}},exports:{}};vm.runInNewContext(out,ctx);const {canEquip}=ctx.module.exports;
+const slots=['haut','pantalon','bottes','gilet-armure','casque-visiere','mains-support'];const config={pieces:Object.fromEntries(slots.map(s=>[s,'unite']))};const collection=slots.map(s=>({slot:s,theme:'unite',owned:true}));
+test('server ownership gates mixed pieces and offline saving',()=>{assert.equal(canEquip(config,collection,false),true);assert.equal(canEquip(config,collection,true),false);assert.equal(canEquip(config,collection.slice(1),false),false);assert.equal(canEquip({pieces:{}},collection,false),false);assert.equal(canEquip({...config,pieces:{...config.pieces,haut:'supreme'}},collection,false),false);assert.equal(canEquip(config,collection.map(p=>({...p,owned:false})),false),false)});

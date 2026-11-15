@@ -1,0 +1,16 @@
+<resources>
+    <color name="up_bg">#05090D</color>
+    <color name="up_surface">#0D2029</color>
+    <color name="up_primary">#9DFF35</color>
+    <color name="up_orange">#FF922B</color>
+    <color name="up_text">#F4F8FB</color>
+    <color name="up_muted">#8FA3AE</color>
+    <color name="up_cyan">#20E5F3</color>
+    <color name="up_cyan_bright">#63F4FF</color>
+    <color name="up_surface_alt">#102A34</color>
+    <color name="up_success">#45E68A</color>
+    <color name="up_danger">#FF4655</color>
+    <color name="up_epic">#A970FF</color>
+    <color name="up_legendary">#FFD45A</color>
+    <color name="up_mythic">#FF416C</color>
+    </resources>

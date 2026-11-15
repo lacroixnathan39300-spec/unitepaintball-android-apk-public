@@ -1,0 +1,6 @@
+SIGNATURE-PRIVEE/
+local.properties
+.gradle/
+build/
+app/build/
+tools/node_modules/

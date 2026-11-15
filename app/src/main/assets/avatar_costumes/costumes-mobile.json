@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "target": "Android + site",
+  "canvasModel": "soldat-modulaire.glb",
+  "slots": [
+    {
+      "id": "casque-visiere",
+      "label": "Casque / visière",
+      "glb": "pieces/casque-visiere.glb"
+    },
+    {
+      "id": "haut",
+      "label": "Haut",
+      "glb": "pieces/haut.glb"
+    },
+    {
+      "id": "gilet-armure",
+      "label": "Gilet / armure",
+      "glb": "pieces/gilet-armure.glb"
+    },
+    {
+      "id": "pantalon",
+      "label": "Pantalon",
+      "glb": "pieces/pantalon.glb"
+    },
+    {
+      "id": "mains-support",
+      "label": "Gants",
+      "glb": "pieces/gants-sombres.glb"
+    },
+    {
+      "id": "bottes",
+      "label": "Bottes",
+      "glb": "pieces/bottes.glb"
+    }
+  ],
+  "costumes": [
+    {
+      "id": "unite",
+      "name": "Tenue Unité",
+      "rarity": "Commun",
+      "colors": {
+        "accent": "#8bb16c",
+        "fabric": "#283329",
+        "armor": "#485647"
+      },
+      "unlock": {
+        "type": "free",
+        "targets": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "effect": "camo",
+      "mixablePieces": true
+    },
+    {
+      "id": "urban-ghost",
+      "name": "Urban Ghost",
+      "rarity": "Rare",
+      "colors": {
+        "accent": "#55bfff",
+        "fabric": "#15243b",
+        "armor": "#5289b4"
+      },
+      "unlock": {
+        "type": "level",
+        "targets": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "effect": "camo",
+      "mixablePieces": true
+    },
+    {
+      "id": "toxic-strike",
+      "name": "Toxic Strike",
+      "rarity": "Épique",
+      "colors": {
+        "accent": "#c45aff",
+        "fabric": "#24162f",
+        "armor": "#714292"
+      },
+      "unlock": {
+        "type": "level",
+        "targets": [
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "effect": "camo",
+      "mixablePieces": true
+    },
+    {
+      "id": "gold-commander",
+      "name": "Gold Commander",
+      "rarity": "Légendaire",
+      "colors": {
+        "accent": "#ffc442",
+        "fabric": "#302719",
+        "armor": "#b99035"
+      },
+      "unlock": {
+        "type": "level",
+        "targets": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      },
+      "effect": "metal",
+      "mixablePieces": true
+    },
+    {
+      "id": "crimson-supreme",
+      "name": "Crimson Supreme",
+      "rarity": "Suprême",
+      "colors": {
+        "accent": "#ff4662",
+        "fabric": "#331c26",
+        "armor": "#a73b50"
+      },
+      "unlock": {
+        "type": "level",
+        "targets": [
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ]
+      },
+      "effect": "metal",
+      "mixablePieces": true
+    },
+    {
+      "id": "inferno",
+      "name": "Inferno · Feu",
+      "rarity": "Légendaire",
+      "colors": {
+        "accent": "#ff8032",
+        "fabric": "#241b17",
+        "armor": "#47271d"
+      },
+      "unlock": {
+        "type": "objective",
+        "targets": [
+          5,
+          10,
+          15,
+          20,
+          25,
+          30
+        ]
+      },
+      "effect": "fire",
+      "mixablePieces": true
+    },
+    {
+      "id": "winter-ops",
+      "name": "Winter Ops · Glace",
+      "rarity": "Légendaire",
+      "colors": {
+        "accent": "#80e2ff",
+        "fabric": "#9ab0c1",
+        "armor": "#dfedf4"
+      },
+      "unlock": {
+        "type": "attendance",
+        "targets": [
+          3,
+          5,
+          8,
+          12,
+          16,
+          20
+        ]
+      },
+      "effect": "ice",
+      "mixablePieces": true
+    },
+    {
+      "id": "shadow",
+      "name": "Shadow",
+      "rarity": "Spécial",
+      "colors": {
+        "accent": "#e44052",
+        "fabric": "#11171d",
+        "armor": "#292d36"
+      },
+      "unlock": {
+        "type": "night_game",
+        "targets": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "effect": "camo",
+      "mixablePieces": true
+    },
+    {
+      "id": "juggernaut",
+      "name": "Juggernaut",
+      "rarity": "Légendaire",
+      "colors": {
+        "accent": "#e0b974",
+        "fabric": "#242b25",
+        "armor": "#5a6658"
+      },
+      "unlock": {
+        "type": "level",
+        "targets": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ]
+      },
+      "effect": "heavy",
+      "mixablePieces": true
+    },
+    {
+      "id": "vanguard",
+      "name": "Vanguard",
+      "rarity": "Épique",
+      "colors": {
+        "accent": "#4fffc5",
+        "fabric": "#112932",
+        "armor": "#36647b"
+      },
+      "unlock": {
+        "type": "objective",
+        "targets": [
+          8,
+          12,
+          16,
+          20,
+          24,
+          28
+        ]
+      },
+      "effect": "light",
+      "mixablePieces": true
+    },
+    {
+      "id": "desert-ranger",
+      "name": "Desert Ranger",
+      "rarity": "Rare",
+      "colors": {
+        "accent": "#d3b583",
+        "fabric": "#5a4936",
+        "armor": "#9d8562"
+      },
+      "unlock": {
+        "type": "attendance",
+        "targets": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12
+        ]
+      },
+      "effect": "pouches",
+      "mixablePieces": true
+    },
+    {
+      "id": "nightwatch",
+      "name": "Nightwatch",
+      "rarity": "Spécial",
+      "colors": {
+        "accent": "#a1ff58",
+        "fabric": "#161e19",
+        "armor": "#354239"
+      },
+      "unlock": {
+        "type": "night_game",
+        "targets": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "effect": "recon",
+      "mixablePieces": true
+    },
+    {
+      "id": "pumpkin-hunter",
+      "name": "Pumpkin Hunter",
+      "rarity": "Halloween",
+      "colors": {
+        "accent": "#ff8a24",
+        "fabric": "#241b17",
+        "armor": "#873c1a"
+      },
+      "unlock": {
+        "type": "halloween",
+        "targets": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "effect": "fire",
+      "mixablePieces": true
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Valeurs FCM facultatives. Tant qu'elles restent vides, le polling existant continue.
+      Elles peuvent être remplies plus tard depuis les paramètres du projet Firebase Android.
+    -->
+    <string name="google_app_id"></string>
+    <string name="gcm_defaultSenderId"></string>
+    <string name="google_api_key"></string>
+    <string name="project_id"></string>
+</resources>
