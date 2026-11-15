@@ -1932,8 +1932,9 @@ public class MainActivity extends Activity {
 
         LinearLayout legacyRow=row();legacyRow.setGravity(Gravity.TOP);
         LinearLayout reserveTile=legacyHomeActionTile("▣","Réserver","Choisir une date",true,NeonPalette.CYAN);
+        reserveTile.setContentDescription("Réserver, choisir une date");
         reserveTile.setOnClickListener(v->{section="Réservations";render();});
-        LinearLayout qrTile=legacyQrTile();qrTile.setOnClickListener(v->{section="QR";render();});
+        LinearLayout qrTile=legacyQrTile();qrTile.setContentDescription("Mon QR code, arrivée et présence");qrTile.setOnClickListener(v->{section="QR";render();});
         LinearLayout.LayoutParams a=new LinearLayout.LayoutParams(0,dp(184),1);a.setMargins(dp(1),dp(6),dp(6),dp(6));legacyRow.addView(reserveTile,a);
         LinearLayout.LayoutParams b=new LinearLayout.LayoutParams(0,dp(184),1);b.setMargins(dp(6),dp(6),dp(1),dp(6));legacyRow.addView(qrTile,b);
         content.addView(legacyRow);
@@ -1989,7 +1990,7 @@ public class MainActivity extends Activity {
         HorizontalScrollView quickScroll=new HorizontalScrollView(this);quickScroll.setHorizontalScrollBarEnabled(false);quickScroll.setClipToPadding(false);
         LinearLayout quickRow=new LinearLayout(this);quickRow.setOrientation(LinearLayout.HORIZONTAL);quickRow.setPadding(0,dp(5),0,dp(8));
         String[][] shortcuts={{"♙","Mes amis","Amis"},{"⚔","Arena","Arena"},{"🎯","Récompenses","Points"},{"▧","Galerie","Galerie"},{"✉","Messages","Messages"}};
-        for(String[] x:shortcuts){LinearLayout q=socialStory(x[0],x[1]);q.setOnClickListener(v->{section=x[2];render();});quickRow.addView(q);}quickScroll.addView(quickRow);content.addView(quickScroll);
+        for(String[] x:shortcuts){LinearLayout q=socialStory(x[0],x[1]);q.setContentDescription(x[1]);q.setOnClickListener(v->{section=x[2];render();});quickRow.addView(q);}quickScroll.addView(quickRow);content.addView(quickScroll);
 
         LinearLayout progressionHost=new LinearLayout(this);progressionHost.setOrientation(LinearLayout.VERTICAL);content.addView(progressionHost);loadHomeProgressionSummary(progressionHost);
     }
